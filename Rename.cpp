@@ -68,7 +68,7 @@ void Rename(const char* oldname[], const char* newname[]) {
 
 
 int main(int argc, char *argv[]){
-
+   // The variable that holds the name of destination folder
    char* pathName = "C:\\Users\\HP\\Desktop\\test\\";
    string fileNames[50];  
    string filterArr[50];
@@ -77,12 +77,20 @@ int main(int argc, char *argv[]){
    string newName[50];
    const char *newNameC[50];
    
+    //Opens the folder and read the list of files
     readDir(pathName, fileNames);
+    //Filters the array of the list from unwanted variables other than the names of files
     filter(fileNames, filterArr);
+    //Combines the name of the path of the folder with the name of the file
     pathname(pathName,dirName,filterArr);
+    //Converts the strings to char, because the final renaming function accepts char only
     strTochar(dirName, holder);
+    //Generates the new names
     newNameF(newName, pathName);
-    displayList(holder);       
+    //Converts the strings to char, because the final renaming function accepts char only
     strTochar(newName, newNameC);
+    //The renaming function, which renames the files with numerically organized names
     Rename(holder,newNameC);
+    //display the name of the files
+    displayList(holder);  
 }
